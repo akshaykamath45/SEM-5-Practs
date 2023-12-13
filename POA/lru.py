@@ -12,6 +12,7 @@ faults = 0
 
 # Iterate through the page reference sequence
 for i, j in enumerate(seq):
+    #i represents the index, and j represents the value of the current element/page in the iteration
     # Check if the page is not in memory
     if j not in block:
         # Find the index of the block with the minimum timestamp
@@ -20,7 +21,7 @@ for i, j in enumerate(seq):
         
         # Replace the block at the found index with the new page
         block[index] = j
-        timestamp[index] = i  # Corrected variable name
+        timestamp[index] = i  
         faults += 1  # Increment fault counter
     else:
         # If the page is in memory, update its timestamp
