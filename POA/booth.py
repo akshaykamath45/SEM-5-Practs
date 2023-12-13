@@ -1,18 +1,18 @@
 def booth(a,m,q,q1,n,n_len):
     print(f"{n} \t {a} \t\t {q} \t\t {q1} ")
     if(n==0):
-        return f"Answer is : {a,q} \n deci : {int(a+q,2)}" if a[0] ==0 else f"Answer is : {a,q} \n 2's complement : {complement(a+q)} \n deci : {int(complement(a+q),2)}"
+        return f"Answer is : {a,q} \n deci : {int(a+q,2)}" if a[0] =='0' else f"Answer is : {a,q} \n 2's complement : {complement(a+q)} \n deci : {int(complement(a+q),2)}"
     if(q[-1]=="1" and q1[-1]=="0"):
         print("10<-")
         a=add(a,complement(m.zfill(n_len)))
-        if(len(a) !=n_len):
+        if(len(a) >n_len):
             a=a[1:]
         print(f"{n} \t {a} \t\t {q} \t\t {q1} before ars")
         a,q,q1=ars(a,q,q1)
     elif(q[-1]=="0" and q1[-1]=="1"):
         print("01<-")
         a=add(a,m)
-        if(len(a) !=n_len):
+        if(len(a) >n_len):
             a=a[1:]
         print(f"{n} \t {a} \t\t {q} \t\t {q1} before ars")
         a,q,q1=ars(a,q,q1)
@@ -57,17 +57,10 @@ def complement(a):
     res=add(res,'1')
     return res
 
-# Input
-a = int(input("Enter Q : "))
-b = int(input("Enter M : "))
-n = len(bin(max(abs(a),abs(b)))[2:]) + 1
-a = bin(a)[2:].zfill(n) if a >= 0 else complement(bin(a)[3:].zfill(n))
-b = bin(b)[2:].zfill(n) if b >= 0 else complement(bin(b)[3:].zfill(n))
+a=int(input("Enter Q : "))
+b=int(input("Enter M : "))
+n=len(bin(max(abs(a),abs(b)))[2:])+1
+a=bin(a)[2:].zfill(n) if a>=0 else complement(bin(a)[3:].zfill(n) )
+b=bin(b)[2:].zfill(n) if b>=0 else complement(bin(b)[3:].zfill(n) )
 
-# Initial display
-print(f"M = {a}, Q = {b}, A={'0'*n}, Count={n}")
-print("Count\tA\t\tQ\t\tQ1")
-print("---------------------------------------------------------------")
-
-# Call the booth function
-print(booth('0'*n, a.zfill(n), b.zfill(n), '0', n, n))
+print(booth('0'*n,a.zfill(n),b.zfill(n),'0',n,n))
