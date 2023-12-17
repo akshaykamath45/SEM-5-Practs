@@ -27,36 +27,36 @@ print(f"Search time: {round((search_end_time-search_start_time)*1000,3)} millise
 
 # BPlusTree
 
-class InMemoryBPlusTree:
-    def __init__(self, order):
-        self.tree = {}
+# class InMemoryBPlusTree:
+#     def __init__(self, order):
+#         self.tree = {}
 
-    def insert(self, key, value):
-        self.tree[key] = value
+#     def insert(self, key, value):
+#         self.tree[key] = value
 
-    def search(self, key):
-        return self.tree.get(key)
+#     def search(self, key):
+#         return self.tree.get(key)
 
-import time
+# import time
 
-tree = InMemoryBPlusTree(order=50)
+# tree = InMemoryBPlusTree(order=50)
 
-for i in range(1000):
-    data = (2 * i).to_bytes(10, 'big')
-    tree.insert(i, data)
+# for i in range(1000):
+#     data = (2 * i).to_bytes(10, 'big')
+#     tree.insert(i, data)
 
-data = int(input("Enter key: "))
-start_time = time.time()
-byte_data = tree.search(data)
-end_time = time.time()
+# data = int(input("Enter key: "))
+# start_time = time.time()
+# byte_data = tree.search(data)
+# end_time = time.time()
 
-if byte_data:
-    int_data = int.from_bytes(byte_data, 'big')
-    print("Value:", int_data)
-else:
-    print(f"No data found for key {data}")
+# if byte_data:
+#     int_data = int.from_bytes(byte_data, 'big')
+#     print("Value:", int_data)
+# else:
+#     print(f"No data found for key {data}")
 
-print("Time taken:", (end_time - start_time) * 1000, "ms")
+# print("Time taken:", (end_time - start_time) * 1000, "ms")
 
 
 # from bplustree import BPlusTree
