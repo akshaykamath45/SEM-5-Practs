@@ -24,4 +24,4 @@ def dfs(graph,current_node,goal_node,visited,current_depth,depth):
             print(f"{visited}\t\t{not_visited}\t\tFalse")
             for i in graph[current_node]:
                 dfs(graph,i,goal_node,visited,current_depth+1,depth)    
-dfid(graph,'A','F',3)
+dfid(graph,'A','D',3)
